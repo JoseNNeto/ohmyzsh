@@ -5,9 +5,9 @@ function theme_precmd {
   PR_PWDLEN=""
 
   local promptsize=${#${(%):---(%n@%m:%l)---()--}}
-  local rubypromptsize=${#${(%)$(ruby_prompt_info)}}
+  local rubypromptsize=${#${(%)💎$(ruby_prompt_info)}}
   local pwdsize=${#${(%):-%~}}
-  local venvpromptsize=$((${#$(virtualenv_prompt_info)}))
+  local venvpromptsize=$((${#🐍$(virtualenv_prompt_info)}))
 
   # Truncate the path if it's too long.
   if (( promptsize + rubypromptsize + pwdsize + venvpromptsize > TERMWIDTH )); then
@@ -103,22 +103,23 @@ fi
 # Finally, the prompt.
 PROMPT='${PR_SET_CHARSET}${PR_STITLE}${(e)PR_TITLEBAR}\
 ${PR_CYAN}${PR_ULCORNER}${PR_HBAR}${PR_CYAN}(\
-${PR_BLUE}%(!.%SROOT%s.👤%n){PR_BLUE}💻%m\
-${PR_CYAN}){PR_GRENN}🐍$(virtualenv_prompt_info)💎{PR_RED}$(ruby_prompt_info)${PR_CYAN}${PR_HBAR}${PR_HBAR}${(e)PR_FILLBAR}${PR_HBAR}${PR_CYAN}(\
-${PR_GREEN}📁%${PR_PWDLEN}<...<%~%<<\
-${PR_CYAN})${PR_CYAN}${PR_HBAR}\
-$(git_prompt_info)$(git_prompt_status)\
-${PR_WHITE}%D{%H:%M:%S}${PR_URCORNER}\
+${PR_BLUE}%(!.%SROOT%s.👤%n)💻%m)${PR_HBAR}\
+(${PR_GREEN}📁%${PR_PWDLEN}<...<%~%<<\
+${PR_CYAN})${PR_HBAR}${PR_GREEN}$(virtualenv_prompt_info)${PR_RED}$(ruby_prompt_info)${PR_CYAN}${PR_HBAR}${PR_CYAN}(\
+🌿$(git_prompt_info)$(git_prompt_status)${PR_CYAN})${PR_HBAR}${(e)PR_FILLBAR}${PR_HBAR}(\
+${PR_WHITE}🗓️ %D{%d/%m/%Y} 🕘%D{%H:%M:%S}${PR_CYAN})${PR_URCORNER}\\
 
 ${PR_CYAN}${PR_LLCORNER}${PR_CYAN}${PR_HBAR}(\
 ${PR_HBAR}\
 ${PR_LIGHT_BLUE}%{$reset_color%}${PR_BLUE})${PR_CYAN}${PR_HBAR}\
->${PR_NO_COLOUR} '
+>${PR_NO_COLOUR} }
+
+${PR_CYAN})${PR_HBAR}'
 
 # display exitcode on the right when > 0
 return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
 RPROMPT=' $return_code${PR_CYAN}${PR_HBAR}${PR_BLUE}${PR_HBAR}\
-(${PR_YELLOW}%D{%a,%b%d}${PR_BLUE})${PR_HBAR}${PR_CYAN}${PR_LRCORNER}${PR_NO_COLOUR}'
+(${PR_YELLOW}${PR_BLUE})${PR_HBAR}${PR_CYAN}${PR_LRCORNER}${PR_NO_COLOUR}'
 
 PS2='${PR_CYAN}${PR_HBAR}\
 ${PR_BLUE}${PR_HBAR}(\
