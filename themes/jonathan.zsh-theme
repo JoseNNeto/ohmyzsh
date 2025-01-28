@@ -46,7 +46,7 @@ done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
 # Modify Git prompt
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" branch %{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""

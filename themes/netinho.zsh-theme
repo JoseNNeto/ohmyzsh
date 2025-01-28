@@ -46,17 +46,17 @@ done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
 # Modify Git prompt
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="(🌿 on %{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=""
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} %{%G✚%}"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} %{%G✹%}"
-ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} %{%G✖%}"
-ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} %{%G➜%}"
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} %{%G═%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} %{%G✭%}"
+ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%} %{%G✚%})"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%} %{%G✹%})"
+ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} %{%G✖%})"
+ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} %{%G➜%})"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} %{%G═%})"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} %{%G✭%})"
 
 # Use extended characters to look nicer if supported.
 if [[ "${langinfo[CODESET]}" = UTF-8 ]]; then
@@ -103,23 +103,21 @@ fi
 # Finally, the prompt.
 PROMPT='${PR_SET_CHARSET}${PR_STITLE}${(e)PR_TITLEBAR}\
 ${PR_CYAN}${PR_ULCORNER}${PR_HBAR}${PR_CYAN}(\
-${PR_BLUE}%(!.%SROOT%s.👤%n)💻%m)${PR_HBAR}\
+${PR_BLUE}%(!.%SROOT%s.👤%n)💻%m${PR_CYAN})${PR_HBAR}\
 (${PR_GREEN}📁%${PR_PWDLEN}<...<%~%<<\
-${PR_CYAN})${PR_HBAR}${PR_GREEN}$(virtualenv_prompt_info)${PR_RED}$(ruby_prompt_info)${PR_CYAN}${PR_HBAR}${PR_CYAN}(\
-🌿$(git_prompt_info)$(git_prompt_status)${PR_CYAN})${PR_HBAR}${(e)PR_FILLBAR}${PR_HBAR}(\
-${PR_WHITE}🗓️ %D{%d/%m/%Y} 🕘%D{%H:%M:%S}${PR_CYAN})${PR_URCORNER}\\
+${PR_CYAN})${PR_HBAR}${PR_GREEN}$(virtualenv_prompt_info)${PR_RED}$(ruby_prompt_info)${PR_CYAN}${PR_HBAR}${PR_CYAN}\
+$(git_prompt_info)$(git_prompt_status)${PR_CYAN}${PR_HBAR}${PR_HBAR}${(e)PR_FILLBAR}${PR_HBAR}(\
+${PR_WHITE}🗓️ %D{%d/%m/%Y} 🕘%D{%H:%M:%S}${PR_CYAN})${PR_HBAR}${(e)PR_FILLBAR}${PR_HBAR}${PR_URCORNER}\
 
-${PR_CYAN}${PR_LLCORNER}${PR_CYAN}${PR_HBAR}(\
-${PR_HBAR}\
-${PR_LIGHT_BLUE}%{$reset_color%}${PR_BLUE})${PR_CYAN}${PR_HBAR}\
->${PR_NO_COLOUR} }
-
-${PR_CYAN})${PR_HBAR}'
+${PR_CYAN}${PR_LLCORNER}${PR_CYAN}\
+${PR_HBAR}>${PR_NO_COLOUR} '
 
 # display exitcode on the right when > 0
 return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
-RPROMPT=' $return_code${PR_CYAN}${PR_HBAR}${PR_BLUE}${PR_HBAR}\
-(${PR_YELLOW}${PR_BLUE})${PR_HBAR}${PR_CYAN}${PR_LRCORNER}${PR_NO_COLOUR}'
+RPROMPT=' $return_code${PR_CYAN}|${PR_HBAR}\
+${PR_CYAN}${PR_LRCORNER}${PR_NO_COLOUR}'
+
+
 
 PS2='${PR_CYAN}${PR_HBAR}\
 ${PR_BLUE}${PR_HBAR}(\
